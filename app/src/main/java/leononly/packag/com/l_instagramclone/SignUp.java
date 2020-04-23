@@ -2,6 +2,7 @@ package leononly.packag.com.l_instagramclone;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,7 +21,7 @@ import java.util.List;
 
 public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
-    private Button btnSave, btnGetAllData;
+    private Button btnSave, btnGetAllData, btnNextActivity;
     private EditText edtName, edtPunchPower, edtPuchSpeed, edtKickSpeed, edtKickPower;
     private TextView txtGetData;
     private String allKickBoxers;
@@ -32,6 +33,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
         btnSave = findViewById(R.id.btnSave);
         btnGetAllData = findViewById(R.id.btnGetAllData);
+        btnNextActivity = findViewById(R.id.btnNextActivity);
         edtName = findViewById(R.id.edtName);
         edtPunchPower = findViewById(R.id.edtPunchPower);
         edtPuchSpeed = findViewById(R.id.edtPuchSpeed);
@@ -76,12 +78,20 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                                 FancyToast.makeText(SignUp.this, allKickBoxers, FancyToast.LENGTH_SHORT, FancyToast.SUCCESS,
                                         true).show();
                             } else {
-                                FancyToast.makeText(SignUp.this, "Failed", FancyToast.LENGTH_SHORT, FancyToast.ERROR,
+                                FancyToast.makeText(SignUp.this, "failed", FancyToast.LENGTH_SHORT, FancyToast.ERROR,
                                         true).show();
                             }
                         }
                     }
                 });
+            }
+        });
+
+        btnNextActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SignUp.this, SignUpLoginActivity.class);
+                startActivity(intent);
             }
         });
 
